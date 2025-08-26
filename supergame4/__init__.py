@@ -21,7 +21,7 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
     contribution = models.CurrencyField(
-        min=0, max=C.ENDOWMENT, label="How much will you place in the group account?"
+        min=0, max=C.ENDOWMENT, label="How many tokens will you place in the group account?"
     )
 
 
@@ -142,8 +142,8 @@ class Results(Page):
     
             row = {
                 'round': r,
-                'contributions': [p.in_round(r).contribution for p in round_players_sorted],
-                'your_payoff': player.in_round(r).payoff
+                'contributions': [int(p.in_round(r).contribution) for p in round_players_sorted],
+                'your_payoff': int(player.in_round(r).payoff)
             }
             table_data.append(row)
     
@@ -151,7 +151,7 @@ class Results(Page):
         labels_others = [p.participant.label for p in players if p != player]
     
         return {
-            'pay': int(player.payoff),
+            'pay': float(player.payoff),
             'priv': int(25 - player.contribution),
             'one_cont': int(conts[0]),
             'two_cont': int(conts[1]),

@@ -5,10 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Instruction Segments</title>
     <style>
-        .segment { display: none;
+        .segment { 
         margin-bottom: 20px;
-        font-size: 24px; }  /* Hide all segments */
-        .segment:first-child { display: block !important; } /* Show only first segment */
+        font-size: 24px; }  /* Show all segments */
         .feedback { font-weight: bold; margin-left: 10px; }
         /*.hidden { display: none; }*/
     </style>
@@ -23,10 +22,9 @@
         payment in cash. Your earnings will depend on the decisions you and others make in this
         study, so it is important that you fully understand these instructions. These earnings will
         be denominated in experimental currency units (or ECUs for short). At the end of the
-        study, ECUs will be converted into dollars at the exchange rate of 10 ECUs for 1 dollar
+        study, ECUs will be converted into dollars at the exchange rate of 10 ECUs for $1.00
         and will be paid to you privately in cash. If you have a question at any point, please raise
         your hand.</p><br>
-        <button class="continue-btn">Continue</button>
     </div>
 
     <!-- Segment 2 -->
@@ -35,7 +33,7 @@
     
         <p>You will interact with other participants in this session through a computer program.
         Your personal identifying information will not be revealed to anyone. To the participants
-        that you will interact with, you will be referred to as a unique alphabet randomly assigned
+        that you will interact with, you will be referred to as a unique alphabet letter randomly assigned
         to you. For this session, you will be referred to as <br><br>
         <b>“Participant {{player.participant.label}}”</b><br><br>
         This study consists of 4 <b>segments</b>. At the beginning of these segments, all participants
@@ -43,7 +41,6 @@
         segment. When a new segment begins, all participants will be randomly placed in a new
         group of 4. In these 4 segments, you will be placed in 4 different groups and will not
         interact with the same persons in different segments.</p>
-        <button class="continue-btn">Continue</button>
     </div>
 
     <!-- Segment 3 -->
@@ -64,7 +61,6 @@
         round of the same segment will follow and there is a 20% chance that the segment
         will end after this round.</li>
           </ul>
-        <button class="continue-btn">Continue</button>
     </div>
     
     <!-- Segment 4 -->
@@ -86,7 +82,6 @@
         of ECUs from the Group Account, even though they allocated a different number of
         tokens to the Group Account</li>
             </ul></p>
-        <button class="continue-btn">Continue</button>
     </div>
     
     <!-- Segment 5-->
@@ -100,17 +95,14 @@
             will not be tolerated. Do not use any language other than English. Also, avoid revealing
             your current seating location or personal identifying information about yourself such as
             your name, age, major, gender, etc.<br></p>
-            <button class="continue-btn">Continue</button>
         </div>
     <div class = "segment">
         <p>Even though you will make decisions in many rounds and the computer will calculate
         your earnings in ECUs for all of these rounds, the computer will randomly select
         <b><u>only 1 segment</u></b> to calculate your cash payment. The computer will use the sum of your
         earnings from all rounds in the selected segment and convert it into dollars at the exchange
-        rate of 10 ECUs for 1 dollar. You will know which segment is selected for your cash earnings
+        rate of 10 ECUs for $1.00. You will know which segment is selected for your cash earnings
         at the end of the study.</p>
-        
-        <button class = "continue-btn">Continue</button>
     </div>
     
     <!-- Segment 6: Allocation Game -->
@@ -126,9 +118,9 @@
         
         
         <button type="button" id="calculateBtn">Calculate</button><br><br>
-        <p>Therefore, your balance in your own <b>Private Account</b> is: <span id="priv_acc" style="color: red;">__</span></p><br>
+        <p>Therefore, your balance in your own <b>Private Account</b> is: 25 - <span id="you">__</span> = <span id="priv_acc" style="color: red;">__</span></p><br>
         <p>So the total tokens in the <b>Group Account</b> is: <span id="i0">__</span> + <span id="i1">__</span> + <span id="i2">__</span> + <span id="i3">__</span> = <span id="group_total" style = "color: blue;">__</span></p><br>
-        <p>And your total earnings in this hypothetical round would be : <span id="priv_acc2" style="color: red;">__</span> + &frac14; x 1.6 x <span id="group_total2" style="color: blue;">__</span> = <span id="result_display">__</span> ECUs</p><br>
+        <p>And your total earnings in this round would be : <span id="priv_acc2" style="color: red;">__</span> + &frac14; x 1.6 x <span id="group_total2" style="color: blue;">__</span> = <span id="result_display">__</span> ECUs</p><br>
         <p>Remember that this is a practice round. You are not interacting with other players. In actual rounds, you will interact with other players and
         you will not know the other group member allocations until after you submit your own allocation.</p><br> 
         
@@ -173,13 +165,13 @@
             <p>7. Each participant starts with how many tokens per round?</p>
             <input type="number" id="q7" required> <span id="feedback7" class="feedback"></span>
             <br><br>
-            <p>8. If all allocate 10 tokens to the Group Account, each earns how many ECUs? (you may use the practice calculator above)</p>
+            <p>8. If everybody in a group, including yourself, allocate 10 tokens to the Group Account, each earns how many ECUs? (you may use the practice calculator above)</p>
             <input type="number" id="q8" required> <span id="feedback8" class="feedback"></span>
             <br><br>
-            <p>9. If you allocate 25 tokens and others allocate 0, your earnings are? (you may use the practice calculator above)</p>
+            <p>9. If you allocate 25 tokens to the group account and all others allocate 0, your earnings are? (you may use the practice calculator above)</p>
             <input type="number" id="q9" required> <span id="feedback9" class="feedback"></span>
             <br><br>            
-            <p>10. If you allocate 0 tokens and all others allocate 25, your earnings are? (you may use the practice calculator above)</p>
+            <p>10. If you allocate 0 tokens to the group account and all others allocate 25, your earnings are? (you may use the practice calculator above)</p>
             <input type="number" id="q10" required?> <span id="feedback10" class="feedback"></span>
             <br><br>
             <p>11. Your final earnings are the sum of ECUs from all segments. True/False</p>
@@ -190,52 +182,66 @@
             <button type="button" id="checkAnswersBtn">Check Answers</button>
         </form>
 
-    <br>
-        <div id="nextButtonContainer">
-            {{ next_button }}
-        </div>
+
     </div>
 
     <script>
 
         document.addEventListener("DOMContentLoaded", function() {
             let segments = document.querySelectorAll(".segment");
-            let buttons = document.querySelectorAll(".continue-btn");
+            let continueBtn = document.querySelector(".continue-btn");
             
-            // Hide all segments except the first one
+            // Show all segments except the quiz section initially
             segments.forEach((segment, index) => {
-                if (index > 0) {
-                    segment.style.display = "none";
-                } else {
+                if (index < segments.length - 1) { // All segments except the last one (quiz)
                     segment.style.display = "block";
+                } else {
+                    segment.style.display = "none"; // Hide the quiz section
                 }
             });
             
-            buttons.forEach((btn, index) => {
-                btn.addEventListener("click", function() {
-                    // Hide the current continue button
-                    btn.style.display = "none";
+            // Show the quiz section when continue button is clicked
+            if (continueBtn) {
+                continueBtn.addEventListener("click", function() {
+                    // Hide the continue button
+                    this.style.display = "none";
                     
-                    // Show next segment if it exists
-                    if (segments[index + 1]) {
-                        segments[index + 1].style.display = "block";
-                    }
+                    // Show the quiz section
+                    let quizSection = segments[segments.length - 1];
+                    quizSection.style.display = "block";
                 });
-            });
+            }
         });
 
         // Allocation Game Calculation
         document.getElementById("calculateBtn").addEventListener("click", function() {
-            let input_you = parseFloat(document.getElementById("input_you").value) || 0;
-            let input2 = parseFloat(document.getElementById("input2").value) || 0;
-            let input3 = parseFloat(document.getElementById("input3").value) || 0;
-            let input4 = parseFloat(document.getElementById("input4").value) || 0;
+            let input_you = parseInt(document.getElementById("input_you").value) || 0;
+            let input2 = parseInt(document.getElementById("input2").value) || 0;
+            let input3 = parseInt(document.getElementById("input3").value) || 0;
+            let input4 = parseInt(document.getElementById("input4").value) || 0;
             let opaque = true;
             
-            if ([input_you, input2, input3, input4].some(num => num < 0 || num > 25)) {
+            // Check if any input is not a whole number or outside the valid range
+            let inputs = [input_you, input2, input3, input4];
+            let originalValues = [
+                document.getElementById("input_you").value,
+                document.getElementById("input2").value,
+                document.getElementById("input3").value,
+                document.getElementById("input4").value
+            ];
+            
+            // Check for decimals or invalid numbers
+            for (let i = 0; i < originalValues.length; i++) {
+                if (originalValues[i] !== "" && (originalValues[i] % 1 !== 0 || isNaN(originalValues[i]))) {
+                    alert("Please enter whole numbers only (no decimals).");
+                    return;
+                }
+            }
+            
+            if (inputs.some(num => num < 0 || num > 25)) {
                 opaque = false;
             }            
-            if ([input_you, input2, input3, input4].some(num => num < 0 || num > 25)) {
+            if (inputs.some(num => num < 0 || num > 25)) {
                 alert("Enter numbers between 0 and 25.");
                 return;
             }
@@ -245,6 +251,7 @@
             let priv = (25-input_you)
             document.getElementById("result_display").innerText = result.toFixed(2);
             document.getElementById("priv_acc").innerText = priv
+            document.getElementById("you").innerText = input_you
             document.getElementById("i0").innerText = input_you
             document.getElementById("i1").innerText = input2
             document.getElementById("i2").innerText = input3
@@ -296,15 +303,11 @@
                 }
             }
         
-            // Enable/disable the "Next" button
-            let nextButtonContainer = document.getElementById("nextButtonContainer");
-            nextButtonContainer.style.pointerEvents = allCorrect ? "auto" : "none";
-            nextButtonContainer.style.opacity = allCorrect ? "1" : "0.5";
-        });
-        
-        // Disable next button on page load
-        document.getElementById("nextButtonContainer").style.pointerEvents = "none";
-        document.getElementById("nextButtonContainer").style.opacity = "0.5";
+                         // All answers are correct - quiz is complete
+             if (allCorrect) {
+                 console.log("All quiz answers are correct!");
+             }
+         });
     </script>
 
 {{ endblock }}

@@ -1,0 +1,311 @@
+{{ block title }}Instructions{{ endblock }}
+{{ block content }}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instruction Segments</title>
+    <style>
+        .segment { display: none;
+        margin-bottom: 20px;
+        font-size: 24px; }  /* Hide all segments */
+        .segment:first-child { display: block !important; } /* Show only first segment */
+        .feedback { font-weight: bold; margin-left: 10px; }
+        /*.hidden { display: none; }*/
+    </style>
+</head>
+ 
+    <!-- Segment 1 -->
+    <div class="segment">
+    <b> Welcome </b><br>
+        <p>Welcome to our study. At this time, please make sure you have turned off and put away
+        all personal electronic devices. This study will take no more than 75 minutes. You will
+        be paid your earnings from each part of the study in addition to the $7.50 participation
+        payment in cash. Your earnings will depend on the decisions you and others make in this
+        study, so it is important that you fully understand these instructions. These earnings will
+        be denominated in experimental currency units (or ECUs for short). At the end of the
+        study, ECUs will be converted into dollars at the exchange rate of 10 ECUs for 1 dollar
+        and will be paid to you privately in cash. If you have a question at any point, please raise
+        your hand.</p><br>
+        <button class="continue-btn">Continue</button>
+    </div>
+
+    <!-- Segment 2 -->
+    <div class="segment">
+        <b>Structure</b><br>
+    
+        <p>You will interact with other participants in this session through a computer program.
+        Your personal identifying information will not be revealed to anyone. To the participants
+        that you will interact with, you will be referred to as a unique alphabet randomly assigned
+        to you. For this session, you will be referred to as <br><br>
+        <b>“Participant {{player.participant.label}}”</b><br><br>
+        This study consists of 4 <b>segments</b>. At the beginning of these segments, all participants
+        will be randomly placed in a group of 4. Each group will remain the same throughout a
+        segment. When a new segment begins, all participants will be randomly placed in a new
+        group of 4. In these 4 segments, you will be placed in 4 different groups and will not
+        interact with the same persons in different segments.</p>
+        <button class="continue-btn">Continue</button>
+    </div>
+
+    <!-- Segment 3 -->
+    <div class="segment">
+        <b>Ending of Segments</b><br>
+        
+            <p>
+        Each segment consists of an uncertain number of <b>rounds</b>. The number of rounds in
+        a segment is determined as follows:
+            </p>
+          <ul>
+            <li>For each round, the computer has randomly selected a number from 1 to 5, each
+        with a 20% chance, for the entire session to determine whether another round of the
+        same segment will follow.</li>
+            <li> If the selected number is from 1 to 4, the next round will follow. If the selected
+        number is 5, the segment will end.</li>
+            <li>At the beginning of each round, you only know that there is an 80% chance that another
+        round of the same segment will follow and there is a 20% chance that the segment
+        will end after this round.</li>
+          </ul>
+        <button class="continue-btn">Continue</button>
+    </div>
+    
+    <!-- Segment 4 -->
+    <div class="segment">
+        <b>Tokens and allocation</b><br>
+        
+        <p><ul>
+            <li>Each participant is endowed with 25 tokens at the beginning of each round and has to allocate these tokens between
+        a <b>Private Account</b> and a <b>Group Account</b>. Each participant has their own Private
+        Account and there is only one Group Account for each group. </li>
+            <li>You will earn 1.0 ECU for each token you allocate to your Private Account. Each
+        token allocated to the Group Account of your group yields a return of 1.6 ECUs.
+        Everyone in the group will receive an equal share of earnings from the Group Account.
+        Since there are 4 participants in a group, each participant will receive<br><br><b>
+        &frac14; x 1.6 x the total number of tokens in the the Group Account</b><br><br>
+        in ECUs regardless of the number of tokens each has allocated to the Group Account
+        </li><br>
+            <li>We would like to emphasize each participant in a group will receive the same amount
+        of ECUs from the Group Account, even though they allocated a different number of
+        tokens to the Group Account</li>
+            </ul></p>
+        <button class="continue-btn">Continue</button>
+    </div>
+    
+    <!-- Segment 5-->
+        <div class="segment">
+            <b>Chat</b><br>
+        
+            <p>Each round consists of 2 stages.<br>
+            <b>In stage 1, you will choose your allocation to the group account.</b> For stage 2, you will view the results of the round.
+            You will be able to see each group members allocation. Additionally, you will be able to chat with your group members for 45 seconds.<br>
+            You can chat about any topic but please avoid profanities and offensive language. These
+            will not be tolerated. Do not use any language other than English. Also, avoid revealing
+            your current seating location or personal identifying information about yourself such as
+            your name, age, major, gender, etc.<br></p>
+            <button class="continue-btn">Continue</button>
+        </div>
+    <div class = "segment">
+        <p>Even though you will make decisions in many rounds and the computer will calculate
+        your earnings in ECUs for all of these rounds, the computer will randomly select
+        <b><u>only 1 segment</u></b> to calculate your cash payment. The computer will use the sum of your
+        earnings from all rounds in the selected segment and convert it into dollars at the exchange
+        rate of 10 ECUs for 1 dollar. You will know which segment is selected for your cash earnings
+        at the end of the study.</p>
+        
+        <button class = "continue-btn">Continue</button>
+    </div>
+    
+    <!-- Segment 6: Allocation Game -->
+    <div class="segment">
+        <b>Practice</b><br>
+    
+        <p>Use this page to practice your allocation to the Group Account...</p>
+
+        <label><b>Your</b> allocation to the <b>Group Account</b>: <input type="number" id="input_you" min="0" max="25"></label><br>
+        <label>Now suppose other group member 1 allocates: <input type="number" id="input2" min="0" max="25"> to the <b>Group Account</b></label><br>
+        <label>Now suppose other group member 2 allocates: <input type="number" id="input3" min="0" max="25"> to the <b>Group Account</b></label><br>
+        <label>Now suppose other group member 3 allocates: <input type="number" id="input4" min="0" max="25"> to the <b>Group Account</b></label><br>
+        
+        
+        <button type="button" id="calculateBtn">Calculate</button><br><br>
+        <p>Therefore, your balance in your own <b>Private Account</b> is: <span id="priv_acc" style="color: red;">__</span></p><br>
+        <p>So the total tokens in the <b>Group Account</b> is: <span id="i0">__</span> + <span id="i1">__</span> + <span id="i2">__</span> + <span id="i3">__</span> = <span id="group_total" style = "color: blue;">__</span></p><br>
+        <p>And your total earnings in this hypothetical round would be : <span id="priv_acc2" style="color: red;">__</span> + &frac14; x 1.6 x <span id="group_total2" style="color: blue;">__</span> = <span id="result_display">__</span> ECUs</p><br>
+        <p>Remember that this is a practice round. You are not interacting with other players. In actual rounds, you will interact with other players and
+        you will not know the other group member allocations until after you submit your own allocation.</p><br> 
+        
+        <div id="continue-allocation-container">
+        <button class="continue-btn">Continue</button>
+        </div>
+    </div>
+
+    <!-- Segment 7: Quiz -->
+    <div class="segment">
+        <b>Quiz</b><br>
+        
+        <p>Before proceeding, please complete the quiz.</p>
+
+        <form id="quizForm">
+            <p>1. How many participants are in a group?</p>
+            <input type="number" id="q1" required> <span id="feedback1" class="feedback"></span>
+            <br><br>
+            <p>2. How many segments are in this study?</p>
+            <input type="number" id="q2" required> <span id="feedback2" class="feedback"></span>
+            <br><br>
+            <p>3. The number of rounds in each segment is uncertain.</p>
+            <label><input type="radio" name="q3" value="True" required> True</label><br>
+            <label><input type="radio" name="q3" value="False"> False</label>
+            <span id="feedback3" class="feedback"></span>
+            <br><br>            
+            <p>4. During each round, the probability that it is the last round is 80%.</p>
+            <label><input type="radio" name="q4" value="True" required> True</label><br>
+            <label><input type="radio" name="q4" value="False"> False</label>
+            <span id="feedback4" class="feedback"></span>
+            <br><br>            
+            <p>5. Between segments, your group members change.</p>
+            <label><input type="radio" name="q5" value="True" required> True</label><br>
+            <label><input type="radio" name="q5" value="False"> False</label>
+            <span id="feedback5" class="feedback"></span>
+            <br><br>            
+            <p>6. Between rounds of the same segment, your group members change.</p>
+            <label><input type="radio" name="q6" value="True" required> True</label><br>
+            <label><input type="radio" name="q6" value="False"> False</label>
+            <span id="feedback6" class="feedback"></span>
+            <br><br>
+            <p>7. Each participant starts with how many tokens per round?</p>
+            <input type="number" id="q7" required> <span id="feedback7" class="feedback"></span>
+            <br><br>
+            <p>8. If all allocate 10 tokens to the Group Account, each earns how many ECUs? (you may use the practice calculator above)</p>
+            <input type="number" id="q8" required> <span id="feedback8" class="feedback"></span>
+            <br><br>
+            <p>9. If you allocate 25 tokens and others allocate 0, your earnings are? (you may use the practice calculator above)</p>
+            <input type="number" id="q9" required> <span id="feedback9" class="feedback"></span>
+            <br><br>            
+            <p>10. If you allocate 0 tokens and all others allocate 25, your earnings are? (you may use the practice calculator above)</p>
+            <input type="number" id="q10" required?> <span id="feedback10" class="feedback"></span>
+            <br><br>
+            <p>11. Your final earnings are the sum of ECUs from all segments. True/False</p>
+           <label><input type="radio" name="q11" value="True" required> True</label><br>
+           <label><input type="radio" name="q11" value="False"> False</label>
+           <span id="feedback11" class="feedback"></span>
+            <br><br>
+            <button type="button" id="checkAnswersBtn">Check Answers</button>
+        </form>
+
+    <br>
+        <div id="nextButtonContainer">
+            {{ next_button }}
+        </div>
+    </div>
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function() {
+            let segments = document.querySelectorAll(".segment");
+            let buttons = document.querySelectorAll(".continue-btn");
+            
+            // Hide all segments except the first one
+            segments.forEach((segment, index) => {
+                if (index > 0) {
+                    segment.style.display = "none";
+                } else {
+                    segment.style.display = "block";
+                }
+            });
+            
+            buttons.forEach((btn, index) => {
+                btn.addEventListener("click", function() {
+                    // Hide the current continue button
+                    btn.style.display = "none";
+                    
+                    // Show next segment if it exists
+                    if (segments[index + 1]) {
+                        segments[index + 1].style.display = "block";
+                    }
+                });
+            });
+        });
+
+        // Allocation Game Calculation
+        document.getElementById("calculateBtn").addEventListener("click", function() {
+            let input_you = parseFloat(document.getElementById("input_you").value) || 0;
+            let input2 = parseFloat(document.getElementById("input2").value) || 0;
+            let input3 = parseFloat(document.getElementById("input3").value) || 0;
+            let input4 = parseFloat(document.getElementById("input4").value) || 0;
+            let opaque = true;
+            
+            if ([input_you, input2, input3, input4].some(num => num < 0 || num > 25)) {
+                opaque = false;
+            }            
+            if ([input_you, input2, input3, input4].some(num => num < 0 || num > 25)) {
+                alert("Enter numbers between 0 and 25.");
+                return;
+            }
+
+            let total_group_tokens = input_you + input2 + input3 + input4;
+            let result = ((1.6 / 4) * total_group_tokens) + (25 - input_you);
+            let priv = (25-input_you)
+            document.getElementById("result_display").innerText = result.toFixed(2);
+            document.getElementById("priv_acc").innerText = priv
+            document.getElementById("i0").innerText = input_you
+            document.getElementById("i1").innerText = input2
+            document.getElementById("i2").innerText = input3
+            document.getElementById("i3").innerText = input4
+            document.getElementById("group_total").innerText = total_group_tokens
+            document.getElementById("priv_acc2").innerText = priv
+            document.getElementById("group_total2").innerText = total_group_tokens
+            
+            
+            let continue_allocation_container = document.getElementById("continue-allocation-container")
+            continue_allocation_container.style.pointerEvents = opaque ? "auto" : "none";
+            continue_allocation_container.style.opacity = opaque ? "1" : "0.5";
+        });
+            // Disable next button on page load
+            document.getElementById("continue-allocation-container").style.pointerEvents = "none";
+            document.getElementById("continue-allocation-container").style.opacity = "0.5";
+        // Quiz Answer Checking
+        document.getElementById("checkAnswersBtn").addEventListener("click", function () {
+            let answers = {
+                q1: "4", q2: "4", q3: "true", q4: "false", q5: "true",
+                q6: "false", q7: "25", q8: "31", q9: "10", q10: "55",q11: "false"
+            };
+        
+            let allCorrect = true;
+        
+            for (let i = 1; i <= 11; i++) {
+                let userAnswer;
+        
+                if ([3, 4, 5, 6, 11].includes(i)) {
+                    // Get selected radio value
+                    let selected = document.querySelector(`input[name="q${i}"]:checked`);
+                    userAnswer = selected ? selected.value.toLowerCase() : "";
+                } else {
+                    // Get value from text or number input
+                    let input = document.getElementById(`q${i}`);
+                    userAnswer = input ? input.value.trim().toLowerCase() : "";
+                }
+        
+                let correctAnswer = answers[`q${i}`];
+                let feedback = document.getElementById(`feedback${i}`);
+        
+                if (userAnswer === correctAnswer) {
+                    feedback.textContent = "✔ Correct!";
+                    feedback.style.color = "green";
+                } else {
+                    feedback.textContent = "✘ Try again!";
+                    feedback.style.color = "red";
+                    allCorrect = false;
+                }
+            }
+        
+            // Enable/disable the "Next" button
+            let nextButtonContainer = document.getElementById("nextButtonContainer");
+            nextButtonContainer.style.pointerEvents = allCorrect ? "auto" : "none";
+            nextButtonContainer.style.opacity = allCorrect ? "1" : "0.5";
+        });
+        
+        // Disable next button on page load
+        document.getElementById("nextButtonContainer").style.pointerEvents = "none";
+        document.getElementById("nextButtonContainer").style.opacity = "0.5";
+    </script>
+
+{{ endblock }}
+

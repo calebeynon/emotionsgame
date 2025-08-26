@@ -1,0 +1,27 @@
+{{ extends "global/Page.html" }}
+{{ block title }}Allocate{{ endblock }}
+{{ block content }}
+<style>
+body {
+  font-size: 18px; /* You can adjust this value as needed */
+}
+
+p {
+  font-size: 24px;  
+  line-height: 1.5; /* Improves line spacing for better readability */
+}
+li {
+  font-size: 1em; /* Same as the body font size */
+</style>
+    <p>
+        Please select how much you would like to allocate to the group account.
+        Remember that you have up to 25 tokens to allocate, but can choose as few or as many as you would like.
+        Also recall that the formula for your share of the group account is:<br>
+        <br>&frac14; x 1.6 x the total number of tokens in the the Group Account</b>        
+    </p>
+
+    {{ formfields }}
+
+    {{ next_button }}
+
+{{ endblock }}

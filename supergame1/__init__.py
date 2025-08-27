@@ -132,14 +132,14 @@ class ResultsWaitPage(WaitPage):
     after_all_players_arrive = set_payoffs
 
 
-class Results(Page):
+class ResultsOnly(Page):
     @staticmethod
     def vars_for_template(player):
         # Get all players in current group (including self) ordered by id_in_group
         players = sorted(player.group.get_players(), key=lambda p: p.id_in_group)
         labels = [p.participant.label for p in players]
     
-        # Build table: one row per round, with each player's contribution and this player's payoff
+        # Build table: one row per round, with each player's contribution and payoff
         table_data = []
         for r in range(1, player.round_number + 1):
             round_players = player.in_round(r).group.get_players()
@@ -148,11 +148,54 @@ class Results(Page):
             row = {
                 'round': r,
                 'contributions': [int(p.in_round(r).contribution) for p in round_players_sorted],
-                'your_payoff': int(player.in_round(r).payoff)
+                'payoffs': [float(p.in_round(r).payoff) for p in round_players_sorted]
             }
             table_data.append(row)
     
         conts = [p.contribution for p in players if p != player]
+        payoffs = [p.payoff for p in players if p != player]
+        labels_others = [p.participant.label for p in players if p != player]
+    
+        return {
+            'pay': float(player.payoff),
+            'priv': int(25 - player.contribution),
+            'one_cont': int(conts[0]),
+            'two_cont': int(conts[1]),
+            'three_cont': int(conts[2]),
+            'one': labels_others[0],
+            'two': labels_others[1],
+            'three': labels_others[2],
+            'pcont': int(player.contribution),
+            'gcont': int(player.group.total_contribution),
+            'player_labels': labels,
+            'table_data': table_data
+        }
+    @staticmethod
+    def get_timeout_seconds(player):
+        return 15
+
+class Results(Page):
+    @staticmethod
+    def vars_for_template(player):
+        # Get all players in current group (including self) ordered by id_in_group
+        players = sorted(player.group.get_players(), key=lambda p: p.id_in_group)
+        labels = [p.participant.label for p in players]
+    
+        # Build table: one row per round, with each player's contribution and payoff
+        table_data = []
+        for r in range(1, player.round_number + 1):
+            round_players = player.in_round(r).group.get_players()
+            round_players_sorted = sorted(round_players, key=lambda p: p.id_in_group)
+    
+            row = {
+                'round': r,
+                'contributions': [int(p.in_round(r).contribution) for p in round_players_sorted],
+                'payoffs': [float(p.in_round(r).payoff) for p in round_players_sorted]
+            }
+            table_data.append(row)
+    
+        conts = [p.contribution for p in players if p != player]
+        payoffs = [p.payoff for p in players if p != player]
         labels_others = [p.participant.label for p in players if p != player]
     
         return {
@@ -189,4 +232,4 @@ class RegroupingMessage(Page):
 
 
 
-page_sequence = [StartPage,RoundWaitPage,Contribute, ResultsWaitPage, Results, RegroupingMessage]
+page_sequence = [StartPage,RoundWaitPage,Contribute, ResultsWaitPage, ResultsOnly, Results, RegroupingMessage]

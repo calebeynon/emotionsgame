@@ -166,7 +166,7 @@ class ResultsOnly(Page):
         }
     @staticmethod
     def get_timeout_seconds(player):
-        return 15
+        return 25
 
 class Results(Page):
     @staticmethod
@@ -207,7 +207,10 @@ class Results(Page):
         }
     @staticmethod
     def get_timeout_seconds(player):
-        return 45
+        if player.round_number == 1:
+            return 90
+        else:
+            return 60
 
 class EndMessage(Page):
     @staticmethod

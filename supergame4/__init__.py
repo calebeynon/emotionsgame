@@ -143,7 +143,7 @@ class ResultsOnly(Page):
             row = {
                 'round': r,
                 'contributions': [int(p.in_round(r).contribution) for p in round_players_sorted],
-                'payoffs': [float(p.in_round(r).payoff) for p in round_players_sorted]
+                'payoffs': [round(float(p.in_round(r).payoff),2) for p in round_players_sorted]
             }
             table_data.append(row)
     
@@ -151,7 +151,7 @@ class ResultsOnly(Page):
         labels_others = [p.participant.label for p in players if p != player]
     
         return {
-            'pay': float(player.payoff),
+            'pay': round(float(player.payoff),2),
             'priv': int(25 - player.contribution),
             'one_cont': int(conts[0]),
             'two_cont': int(conts[1]),
@@ -184,7 +184,7 @@ class Results(Page):
             row = {
                 'round': r,
                 'contributions': [int(p.in_round(r).contribution) for p in round_players_sorted],
-                'payoffs': [float(p.in_round(r).payoff) for p in round_players_sorted]
+                'payoffs': [round(float(p.in_round(r).payoff),2) for p in round_players_sorted]
             }
             table_data.append(row)
     
@@ -192,7 +192,7 @@ class Results(Page):
         labels_others = [p.participant.label for p in players if p != player]
     
         return {
-            'pay': float(player.payoff),
+            'pay': round(float(player.payoff),2),
             'priv': int(25 - player.contribution),
             'one_cont': int(conts[0]),
             'two_cont': int(conts[1]),

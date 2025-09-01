@@ -1,5 +1,5 @@
 {{ extends "global/Page.html" }}
-{{ block title }}Allocate{{ endblock }}
+{{ block title }}<div style="text-align: center;">Allocate</div>{{ endblock }}
 {{ block content }}
 <style>
 body {
@@ -12,12 +12,19 @@ p {
 }
 li {
   font-size: 1em; /* Same as the body font size */
+}
 </style>
     <p>
-        Please select how many tokens you would like to allocate to the group account.
-        Remember that you have up to 25 tokens to allocate, but can choose as few or as many as you would like.
-        Also recall that the formula for your share of the group account is:<br>
-        <br>&frac14; x 1.6 x the total number of tokens in the the Group Account</b>
+        Please select how many tokens you would like to allocate between your private account and the group account.
+        Remember that you have up to 25 tokens to allocate between the two accounts. You can choose as few or as many as you would like to allocate to the group account.
+        <br>
+    </p>
+
+    <p>
+        Recall here that each token in your private account earns you 1.0 ECU, while the formula for your share of the group account is:
+        <div style="text-align: center;">
+            <b>&frac14; x 1.6 x the total number of tokens in the Group Account</b>
+        </div>
     </p>
 
     <div class="mb-3">

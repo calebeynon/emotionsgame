@@ -1,5 +1,5 @@
 {{ extends "global/Page.html" }}
-{{ block title }}Round {{ player.round_number }} results{{ endblock }}
+{{ block title }}<div style="text-align: center;">Results</div>{{ endblock }}
 
 {{ block content }}
 <style>
@@ -82,7 +82,6 @@
 </style>
 <div class="wrapper">
   <div class="split left">
-    <h2 style="font-size:24px;">Results</h2>
     <p style="font-size:24px;">
       You placed {{ pcont }} tokens in the group account, therefore your private account balance is <span style = "color:red;">{{ priv }}</span> tokens.
       Your group members allocated the following to the group account:<br><br>
@@ -90,8 +89,8 @@
       {{ two }}: {{ two_cont }} tokens<br>
       {{ three }}: {{ three_cont }} tokens</b><br><br>
       <b>Your group's total account balance is <span style="color:blue;">{{ gcont }}</span> tokens.</b><br>
-      <b>Your profit is therefore <span style="color:red;">{{ priv }}</span> + &frac14; x 1.6 x <span style = "color:blue;">{{ gcont }}</span> = {{ pay }} ECUs.</b>
-    </p><br><br> 
+      <b>Your share of earnings is therefore <span style="color:red;">{{ priv }}</span> + &frac14; x 1.6 x <span style = "color:blue;">{{ gcont }}</span> = {{ pay }} ECUs.</b>
+    </p><br><br>
     <h2 style="font-size:24px;">Table of Previous Results</h2>
      <table border="1" style="font-size:24px;">
        <tr>
@@ -110,7 +109,7 @@
            {% endfor %}
          </tr>
          <tr>
-           <td style="font-style:italic; background-color:#e0e0e0;">Payoff</td>
+           <td style="font-style:italic; background-color:#e0e0e0;">Earnings</td>
            {% for p in row.payoffs %}
              <td style="background-color:#e0e0e0;">{{ p }} ECUs</td>
            {% endfor %}

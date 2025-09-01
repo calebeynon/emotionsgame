@@ -81,30 +81,31 @@
     </div>
     
     <!-- Segment 5-->
-    <div class="segment">
-        <b>Decisions</b><br>
-    
-        <p>Each round consists of 2 stages.<br>
-            <ul>
-                <li>In stage 1, you will divide your 25 tokens between a Private Account and a Group Account. (Enter a whole number between 0 and 25 to allocate to the Group Account)</li>
-                <li>In stage 2, you will view the results of the round and chat with your group members.</li>
-                <li>You will be able to see <b>the total number of tokens in the group account</b> and <b>each group member's allocation to the group account</b>.</li>
-                <li>You will be able to chat with your group members for up to 90 seconds. Please avoid profanities and offensive language. This
-                    will not be tolerated. Do not use any language other than English. Also, avoid revealing
-                    your current seating location or personal identifying information about yourself such as
-                    your name, age, major, gender, etc.</li>
-                <li>Even though you will make decisions in many rounds and the computer will calculate
-                    your earnings in ECUs for all of these rounds, the computer will randomly select
-                    <b><u>only 1 segment</u></b> to calculate your cash payment. The computer will use the sum of your
-                    earnings from all rounds in the selected segment and convert it into dollars at the exchange
-                    rate of 10 ECUs for $1.00. You will know which segment is selected for your cash earnings
-                    at the end of the study.</li>
-            </ul>
-            
-            
-        </p>
-    </div>
+        <div class="segment">
+            <b>Decisions</b><br>
+        
+            <p>Each round consists of 2 stages.<br>
+                <ul>
+                    <li>In stage 1, you will divide your 25 tokens between a Private Account and a Group Account. (Enter a whole number between 0 and 25 to allocate to the Group Account)</li>
+                    <li>In stage 2, you will view the results of the round and chat with your group members.</li>
+                    <li>You will be able to see <b>the total number of tokens in the group account</b> and <b>each group member's allocation to the group account</b>.</li>
+                    <li>You will be able to chat with your group members for up to 90 seconds. Please avoid profanities and offensive language. This
+                        will not be tolerated. Do not use any language other than English. Also, avoid revealing
+                        your current seating location or personal identifying information about yourself such as
+                        your name, age, major, gender, etc.</li>
+                    <li>Even though you will make decisions in many rounds and the computer will calculate
+                        your earnings in ECUs for all of these rounds, the computer will randomly select
+                        <b><u>only 1 segment</u></b> to calculate your cash payment. The computer will use the sum of your
+                        earnings from all rounds in the selected segment and convert it into dollars at the exchange
+                        rate of 10 ECUs for $1.00. You will know which segment is selected for your cash earnings
+                        at the end of the study.</li>
+                </ul>
+                
+                
+            </p>
+        </div>
 
+    
     <!-- Segment 6: Allocation Game -->
     <div class="segment">
         <b>Practice</b><br>
@@ -124,76 +125,6 @@
         <p>Remember that this is a practice round. You are not interacting with other players. In actual rounds, you will interact with other players and
         you will not know the other group member allocations until after you submit your own allocation.</p><br> 
         
-    </div>
-
-    <!-- Segment 7: Quiz -->
-    <div class="segment">
-        <b>Quiz</b><br>
-        
-        <p>Before proceeding, please complete the quiz.</p>
-
-        <form id="quizForm">
-            <p>1. How many participants are in a group?</p>
-            <select id="q1" required>
-                <option value="">Select...</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select> <span id="feedback1" class="feedback"></span>
-            <br><br>
-            <p>2. How many segments are in this study?</p>
-            <select id="q2" required>
-                <option value="">Select...</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select> <span id="feedback2" class="feedback"></span>
-            <br><br>
-            <p>3. The number of rounds in each segment is uncertain.</p>
-            <label><input type="radio" name="q3" value="True" required> True</label><br>
-            <label><input type="radio" name="q3" value="False"> False</label>
-            <span id="feedback3" class="feedback"></span>
-            <br><br>            
-            <p>4. During each round, the probability that it is the last round is 80%.</p>
-            <label><input type="radio" name="q4" value="True" required> True</label><br>
-            <label><input type="radio" name="q4" value="False"> False</label>
-            <span id="feedback4" class="feedback"></span>
-            <br><br>            
-            <p>5. Between segments, your group members change.</p>
-            <label><input type="radio" name="q5" value="True" required> True</label><br>
-            <label><input type="radio" name="q5" value="False"> False</label>
-            <span id="feedback5" class="feedback"></span>
-            <br><br>            
-            <p>6. Between rounds of the same segment, your group members change.</p>
-            <label><input type="radio" name="q6" value="True" required> True</label><br>
-            <label><input type="radio" name="q6" value="False"> False</label>
-            <span id="feedback6" class="feedback"></span>
-            <br><br>
-            <p>7. Each participant starts with how many tokens per round?</p>
-            <input type="number" id="q7" required> <span id="feedback7" class="feedback"></span>
-            <br><br>
-            <p>8. If everybody in a group, including yourself, allocate 10 tokens to the Group Account, each earns how many ECUs? (you may use the practice calculator above)</p>
-            <input type="number" id="q8" required> <span id="feedback8" class="feedback"></span>
-            <br><br>
-            <p>9. If you allocate 25 tokens to the group account and all others allocate 0, your earnings are? (you may use the practice calculator above)</p>
-            <input type="number" id="q9" required> <span id="feedback9" class="feedback"></span>
-            <br><br>            
-            <p>10. If you allocate 0 tokens to the group account and all others allocate 25, your earnings are? (you may use the practice calculator above)</p>
-            <input type="number" id="q10" required?> <span id="feedback10" class="feedback"></span>
-            <br><br>
-            <p>11. Your total earnings are the sum of ECUs from all segments. True/False</p>
-           <label><input type="radio" name="q11" value="True" required> True</label><br>
-           <label><input type="radio" name="q11" value="False"> False</label>
-           <span id="feedback11" class="feedback"></span>
-            <br><br>
-            <button type="button" id="checkAnswersBtn">Check Answers</button>
-        </form>
-
-
     </div>
 
     <script>
@@ -245,46 +176,6 @@
             document.getElementById("priv_acc2").innerText = priv
             document.getElementById("group_total2").innerText = total_group_tokens
         });
-        // Quiz Answer Checking
-        document.getElementById("checkAnswersBtn").addEventListener("click", function () {
-            let answers = {
-                q1: "4", q2: "4", q3: "true", q4: "false", q5: "true",
-                q6: "false", q7: "25", q8: "31", q9: "10", q10: "55",q11: "false"
-            };
-        
-            let allCorrect = true;
-        
-            for (let i = 1; i <= 11; i++) {
-                let userAnswer;
-        
-                if ([3, 4, 5, 6, 11].includes(i)) {
-                    // Get selected radio value
-                    let selected = document.querySelector(`input[name="q${i}"]:checked`);
-                    userAnswer = selected ? selected.value.toLowerCase() : "";
-                } else {
-                    // Get value from text or number input
-                    let input = document.getElementById(`q${i}`);
-                    userAnswer = input ? input.value.trim().toLowerCase() : "";
-                }
-        
-                let correctAnswer = answers[`q${i}`];
-                let feedback = document.getElementById(`feedback${i}`);
-        
-                if (userAnswer === correctAnswer) {
-                    feedback.textContent = "✔ Correct!";
-                    feedback.style.color = "green";
-                } else {
-                    feedback.textContent = "✘ Try again!";
-                    feedback.style.color = "red";
-                    allCorrect = false;
-                }
-            }
-        
-                         // All answers are correct - quiz is complete
-             if (allCorrect) {
-                 console.log("All quiz answers are correct!");
-             }
-         });
     </script>
 
 {{ endblock }}

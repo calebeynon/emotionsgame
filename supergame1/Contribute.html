@@ -13,6 +13,24 @@ p {
 li {
   font-size: 1em; /* Same as the body font size */
 }
+
+.balance-display {
+  background-color: #f8f9fa;
+  border: 2px solid #dee2e6;
+  border-radius: 8px;
+  padding: 15px;
+  margin-left: 15px;
+  min-width: 250px;
+  text-align: center;
+  font-weight: bold;
+  color: #495057;
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
 </style>
     <p>
         Please select how many tokens you would like to allocate to the Group Account.
@@ -30,12 +48,53 @@ li {
 
     <div class="mb-3">
         <label for="id_contribution">{{ form.contribution.label }}</label>
-        <div class="input-group">
-            <input type="number" name="contribution" id="id_contribution" class="form-control" min="0" max="25" required>
-            <span class="input-group-text">tokens</span>
+        <div class="input-container">
+            <div class="input-group" style="flex: 1;">
+                <input type="number" name="contribution" id="id_contribution" class="form-control" min="0" max="25" required>
+                <span class="input-group-text">tokens</span>
+            </div>
+            <div class="balance-display">
+                <div>Your private account balance would be:</div>
+                <div id="private-balance" style="font-size: 20px; color: #007bff; margin-top: 5px;">25 tokens</div>
+            </div>
         </div>
     </div>
 
     {{ next_button }}
+
+<script>
+function updatePrivateBalance() {
+    const input = document.getElementById('id_contribution');
+    const balanceDisplay = document.getElementById('private-balance');
+    
+    if (input && balanceDisplay) {
+        const contribution = parseFloat(input.value);
+        
+        // Check if input is valid (between 0 and 25 and is a whole number)
+        if (isNaN(contribution) || contribution < 0 || contribution > 25) {
+            balanceDisplay.innerHTML = '<div style="color: #dc3545;">please enter a number between 0 and 25</div>';
+        } else if (contribution % 1 !== 0) {
+            balanceDisplay.innerHTML = '<div style="color: #dc3545;">please enter a whole number</div>';
+        } else {
+            const privateBalance = 25 - contribution;
+            balanceDisplay.innerHTML = '<div style="font-size: 20px; color: #007bff; margin-top: 5px;">' + privateBalance + ' tokens</div>';
+        }
+    }
+}
+
+// Update balance when input changes
+document.addEventListener('DOMContentLoaded', function() {
+    const input = document.getElementById('id_contribution');
+    if (input) {
+        input.addEventListener('input', updatePrivateBalance);
+        
+        // Update every 0.5 seconds
+        setInterval(updatePrivateBalance, 500);
+        
+        // Initial update
+        updatePrivateBalance();
+    }
+});
+</script>
 
 {{ endblock }}

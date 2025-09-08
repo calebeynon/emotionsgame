@@ -168,7 +168,8 @@ class ResultsOnly(Page):
             'pcont': int(player.contribution),
             'gcont': int(player.group.total_contribution),
             'player_labels': labels,
-            'table_data': table_data
+            'table_data': table_data,
+            'pay_share': round(float(player.group.individual_share),2)
         }
     @staticmethod
     def get_timeout_seconds(player):
@@ -210,7 +211,8 @@ class Results(Page):
             'pcont': int(player.contribution),
             'gcont': int(player.group.total_contribution),
             'player_labels': labels,
-            'table_data': table_data
+            'table_data': table_data,
+            'pay_share': round(float(player.group.individual_share),2)
         }
     @staticmethod
     def get_timeout_seconds(player):

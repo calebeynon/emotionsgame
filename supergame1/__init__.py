@@ -181,7 +181,8 @@ class Results(Page):
         # Get all players in current group (including self) ordered by id_in_group
         players = sorted(player.group.get_players(), key=lambda p: p.id_in_group)
         labels = [p.participant.label for p in players]
-    
+        my_label = player.participant.label
+
         # Build table: one row per round, with each player's contribution and payoff
         table_data = []
         for r in range(1, player.round_number + 1):
@@ -205,6 +206,7 @@ class Results(Page):
             'one_cont': int(conts[0]),
             'two_cont': int(conts[1]),
             'three_cont': int(conts[2]),
+            'my_label': my_label,
             'one': labels_others[0],
             'two': labels_others[1],
             'three': labels_others[2],

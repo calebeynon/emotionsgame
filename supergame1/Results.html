@@ -98,7 +98,12 @@
          <th>Round</th>
          <th style="width:80px;"></th>
          {% for label in player_labels %}
-           <th>Player {{ label }}</th>
+           <th>
+             {% if label == my_label %}
+               <div style="color:red;">(You)</div>
+             {% endif %}
+             Player {{ label }}
+           </th>
          {% endfor %}
        </tr>
        {% for row in table_data %}

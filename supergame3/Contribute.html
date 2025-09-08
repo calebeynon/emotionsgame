@@ -49,13 +49,16 @@ li {
     <div class="mb-3">
         <label for="id_contribution">{{ form.contribution.label }}</label>
         <div class="input-container">
-            <div class="input-group" style="flex: 1;">
-                <input type="number" name="contribution" id="id_contribution" class="form-control" min="0" max="25" required>
-                <span class="input-group-text">tokens</span>
+            <div style="flex: 1; display: flex; flex-direction: column;">
+                <div class="input-group">
+                    <input type="number" name="contribution" id="id_contribution" class="form-control" min="0" max="25" required>
+                    <span class="input-group-text">tokens</span>
+                </div>
+                <div id="contribution-error" style="color: #dc3545; margin-top: 6px; min-height: 1.2em;"></div>
             </div>
             <div class="balance-display">
                 <div>Your private account balance would be:</div>
-                <div id="private-balance" style="font-size: 20px; color: #007bff; margin-top: 5px;">25 tokens</div>
+                <div id="private-balance" style="font-size: 20px; color: #6c757d; margin-top: 5px;">--</div>
             </div>
         </div>
     </div>
@@ -66,18 +69,35 @@ li {
 function updatePrivateBalance() {
     const input = document.getElementById('id_contribution');
     const balanceDisplay = document.getElementById('private-balance');
+    const errorDisplay = document.getElementById('contribution-error');
     
     if (input && balanceDisplay) {
-        const contribution = parseFloat(input.value);
+        const rawValue = input.value;
+
+        if (rawValue === '') {
+            balanceDisplay.innerHTML = '<div style="font-size: 20px; color: #6c757d; margin-top: 5px;">--</div>';
+            if (errorDisplay) errorDisplay.textContent = '';
+            return;
+        }
+
+        const contribution = parseFloat(rawValue);
+        let errorMsg = '';
         
         // Check if input is valid (between 0 and 25 and is a whole number)
         if (isNaN(contribution) || contribution < 0 || contribution > 25) {
-            balanceDisplay.innerHTML = '<div style="color: #dc3545;">please enter a number between 0 and 25</div>';
+            errorMsg = 'please enter a number between 0 and 25';
         } else if (contribution % 1 !== 0) {
-            balanceDisplay.innerHTML = '<div style="color: #dc3545;">please enter a whole number</div>';
+            errorMsg = 'please enter a whole number';
+        }
+
+        if (errorMsg) {
+            const errorHtml = '<div style="color: #dc3545;">' + errorMsg + '</div>';
+            balanceDisplay.innerHTML = errorHtml;
+            if (errorDisplay) errorDisplay.textContent = errorMsg;
         } else {
             const privateBalance = 25 - contribution;
             balanceDisplay.innerHTML = '<div style="font-size: 20px; color: #007bff; margin-top: 5px;">' + privateBalance + ' tokens</div>';
+            if (errorDisplay) errorDisplay.textContent = '';
         }
     }
 }

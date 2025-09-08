@@ -220,17 +220,25 @@ class EndMessage(Page):
         return player.round_number == C.NUM_ROUNDS
     @staticmethod
     def before_next_page(player,timeout_happened):
-        rand_payoff = random.choice(['payoff_sum_2','payoff_sum_4'])
+        rand_payoff = random.choices(
+            ['payoff_sum_1', 'payoff_sum_2', 'payoff_sum_3', 'payoff_sum_4'],
+            weights=[0.3, 0.3, 0.3, 0.1],
+            k=1
+        )[0]
         player.participant.payoff = player.participant.vars[rand_payoff]
-        if rand_payoff == 'payoff_sum_2':
+        if rand_payoff == 'payoff_sum_1':
+            player.participant.vars['seg_chosen'] = '1'
+        elif rand_payoff == 'payoff_sum_2':
             player.participant.vars['seg_chosen'] = '2'
+        elif rand_payoff == 'payoff_sum_3':
+            player.participant.vars['seg_chosen'] = '3'
         else:
             player.participant.vars['seg_chosen'] = '4'
     @staticmethod
     def vars_for_template(player):
         return {
             "total_payoff": player.participant.vars.get('payoff_sum_4',0),
-            "message": "This was the final round of the final segment. Please proceed to complete a survey."
+            "message": "This was the final round of the final segment. Please proceed to complete the survey."
         }
 
 
